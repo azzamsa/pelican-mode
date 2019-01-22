@@ -120,6 +120,7 @@ arguments, field and value strings."
     (define-key map (kbd "n") #'pelican-mode-insert-header)
     (define-key map (kbd "p") #'pelican-mode-publish)
     (define-key map (kbd "u") #'pelican-make-rsync-upload)
+    (define-key map (kbd "g") #'pelican-make-github)
     map)
   "Keymap for Pelican commands after ‘pelican-mode-keymap-prefix’.")
 (fset 'pelican-mode-command-map pelican-mode-command-map)
@@ -285,7 +286,11 @@ has no status."
   (interactive)
   (pelican-make "rsync_upload"))
 
-
+(defun pelican-make-github ()
+  "Generate HTML with publish config and Upload them to Github pages
+ via a Makefile at the root of the site."
+  (interactive)
+  (pelican-make "github"))
 
 (defun pelican-mode-set-fields (&rest fields)
   "Insert a Pelican header for an article with metadata FIELDS."
